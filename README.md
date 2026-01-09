@@ -1,13 +1,15 @@
+# Me API Backend
 
-
-Me API Backend is a REST API for managing a single professional profile.  
-It provides endpoints to create, retrieve, update, and delete profile data such as skills, experience, and links.
+Me API Backend is a simple REST API that stores and exposes a single professional profile.
+It supports creating, reading, updating, and deleting profile data and provides query endpoints
+to search projects by skill. A minimal frontend is included to consume the API.
 
 ---
 
-## Live API
+## Live Application
 
-Base URL: https://me-api-backend-vtyh.onrender.com
+Backend + Frontend (Render):  
+https://me-api-backend-vtyh.onrender.com
 
 ---
 
@@ -15,31 +17,68 @@ Base URL: https://me-api-backend-vtyh.onrender.com
 
 - Node.js
 - Express.js
-- MongoDB
+- MongoDB (Mongoose)
+- React (via CDN)
+- Tailwind CSS (via CDN)
 
 ---
 
 ## API Endpoints
 
-- `GET /health`
-- `GET /me`
-- `POST /me`
-- `PUT /me`
-- `DELETE /me`
+### Health
+- `GET /health`  
+  Returns 200 if the service is running.
+
+### Profile
+- `GET /me` – fetch profile
+- `POST /me` – create profile
+- `PUT /me` – update profile
+- `DELETE /me` – delete profile
+
+### Queries
+- `GET /projects?skill=<skill>` – returns projects matching a skill
 
 ---
 
-## Data Model
+## Data Model (Profile)
 
-**Profile**
+- name
+- email
 - title
 - description
 - location
 - yearsOfExperience
-- skills
-- links
+- skills[] (string)
+- education[]
+- projects[]  
+  - title  
+  - description  
+  - links[]
+- work[]
+- links  
+  - github  
+  - linkedin  
+  - portfolio
 - createdAt
 - updatedAt
+
+MongoDB is used with a single `Profile` collection. Indexes are handled by MongoDB defaults.
+
+---
+
+## Frontend (Minimal UI)
+
+A minimal frontend is served from the backend root (`/`).
+
+Features:
+- Displays profile information
+- Allows searching projects by skill
+- Consumes the hosted API directly
+- Implemented using React and Tailwind via CDN (no build tooling)
+
+Purpose:
+- Demonstrate API usability
+- Validate query endpoints
 
 ---
 
@@ -58,3 +97,10 @@ MONGODB_URI
 npm install
 npm run dev
 ```
+
+---
+
+## Resume
+
+Resume link:
+https://drive.google.com/file/d/1o6HnvK4SNs5E76eKSYpxHjvKrQ63mU5u/view?usp=drive_link

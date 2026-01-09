@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://me-api-backend-vtyh.onrender.com";
 
 function App() {
   const [profile, setProfile] = React.useState(null);
