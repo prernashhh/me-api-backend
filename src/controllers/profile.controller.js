@@ -64,9 +64,36 @@ const deleteProfile = async (req, res) => {
   }
 };
 
+// GET /projects?skill=
+const getProjectsBySkill = async (req, res) => {
+  try {
+    const { skill } = req.query;
+
+    if (!skill) {
+      return res.status(400).json({ message: "Skill query parameter is required" });
+    }
+
+    const profile = await Profile.findOne();
+
+    if (!profile) {
+      return res.status(404).json({ message: "Profile not found" });
+    }
+
+    const matchedProjects = profile.projects.filter(project =>
+      project.description?.toLowerCase().includes(skill.toLowerCase()) ||
+      project.title?.toLowerCase().includes(skill.toLowerCase())
+    );
+
+    res.status(200).json(matchedProjects);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to query projects" });
+  }
+};
+
 module.exports = {
   getProfile,
   createProfile,
   updateProfile,
-  deleteProfile
+  deleteProfile,
+  getProjectsBySkill
 };
