@@ -5,6 +5,12 @@ It provides endpoints to create, retrieve, update, and delete profile data such 
 
 ---
 
+## Live API
+
+Base URL: https://me-api-backend-vtyh.onrender.com
+
+---
+
 ## Tech Stack
 
 - Node.js
@@ -16,8 +22,8 @@ It provides endpoints to create, retrieve, update, and delete profile data such 
 ## API Endpoints
 
 - `GET /health`
-- `POST /me`
 - `GET /me`
+- `POST /me`
 - `PUT /me`
 - `DELETE /me`
 
@@ -40,8 +46,8 @@ It provides endpoints to create, retrieve, update, and delete profile data such 
 ## Environment Variables
 
 ```
-PORT=
-MONGODB_URI=
+PORT
+MONGODB_URI
 ```
 
 ---
